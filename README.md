@@ -8,3 +8,4 @@ Next.js ---- npx create-next-app
 npm install -g @sanity/cli    
 sanity init --coupoon javascriptmastery2022
 sanity start
+sanity manage - copy projectID to manage in our client.js for sanity
