@@ -4,7 +4,6 @@ import {client} from "../lib/client";
 const Home = ({products,bannerData}) => { //We Get our prouducts from the async call at the bottom
   return (
     <>
-   
     <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
     {console.log(bannerData)}
     
@@ -15,11 +14,11 @@ const Home = ({products,bannerData}) => { //We Get our prouducts from the async 
 
     <div className='products-container'>
       {products?.map((product)=>
-             product.name
+             <Product key={product.id} product= {product}/>
       )}
     </div>
 
-    <FooterBanner/>
+    <FooterBanner footerBanner = {bannerData && bannerData[0]}/>
     </>
   )
 }
