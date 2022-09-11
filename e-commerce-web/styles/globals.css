@@ -10,7 +10,51 @@ body, * {
 ::-webkit-scrollbar {
   width: 0px;
 }
+#dark {
+  background-color: #121212;
+  
+}
+#dark .product-price{
+  color: red;
+}
 
+#dark   .small-image{
+  background-color: #121231;
+}
+
+#dark .product-image{
+background-color: #121231;
+color:white
+}
+
+#dark .cart-container{
+  background-color: #121231;
+}
+
+#dark .switch{
+  color:white;
+}
+
+#dark a{
+  color: white;
+}
+
+#dark .heading{
+  color: white;
+}
+#dark svg{
+  color: purple;
+}
+
+#dark h3{
+  color: purple;
+}
+.switch{
+display: flex; 
+align-items: center;
+justify-content: center;
+width: 50%;
+}
 a {
   color: inherit;
   text-decoration: none;

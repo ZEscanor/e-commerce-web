@@ -36,7 +36,7 @@ const Cart = () => {
     
     const data = await response.json();
 
-    console.log( data, "This is our data resoinse")
+   
 
    
 

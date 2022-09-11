@@ -6,6 +6,8 @@ import React, {useContext,createContext, useState, useEffect}from 'react';
 
     export const StateContext = ({ children}) => {
        const [showCart, setShowCart] = useState(false);
+       const [darkMode, setDarkMode] = useState(false);
+
 
        const [cartItems, setCartItems] = useState([]);
         const [totalPrice, setTotalPrice] = useState(0);
@@ -99,7 +101,9 @@ import React, {useContext,createContext, useState, useEffect}from 'react';
                     decQty,
                     onAdd,
                     toggleCartItemQuantity,
-                    onRemove
+                    onRemove,
+                    darkMode,
+                    setDarkMode
                 }}
                 >
                 {children}
