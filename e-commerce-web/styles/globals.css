@@ -282,8 +282,9 @@ text-align: end;
 }
 .banner-desc .left h3{
   font-weight: 900;
-  font-size: 80px;
+  font-size: 3rem;
   margin-left: 25px;
+  padding-right: 50px;
 }
 .banner-desc .left p{
   margin:18px;
@@ -300,7 +301,7 @@ text-align: end;
 }
 .banner-desc .right h3{
   font-weight: 800;
-  font-size: 60px;
+  font-size: 3rem;
 }
 .banner-desc .right p{
   font-size: 18px;
@@ -662,6 +663,16 @@ margin-top: 160px;
   margin-top: 10px;
 }
 
+
+@media screen and (max-width:500px){
+ .layout {
+  height: 3700px;
+  width:500px;
+   background-color: red;
+  }
+}
+
+
 @media screen and (max-width:800px) {
   .hero-banner-container{
     height: 560px;
@@ -683,8 +694,9 @@ margin-top: 160px;
     height: 56%
   }
   .banner-desc .left h3{
+    padding-right: 50px;
     font-weight: 900;
-    font-size: 50px;
+    font-size: 3rem;
     margin-left: 5px;
   }
   .banner-desc .left p{
@@ -805,3 +817,4 @@ margin-top: 160px;
   margin: auto;
 }
 }
+
