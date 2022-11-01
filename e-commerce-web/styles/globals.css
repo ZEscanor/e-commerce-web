@@ -49,6 +49,13 @@ color:white
 #dark h3{
   color: purple;
 }
+
+#dark .hero-banner-container h1{
+ color: red;
+}
+#dark .product-detail-image{
+ background-color: #121231;
+}
 .switch{
 display: flex; 
 align-items: center;

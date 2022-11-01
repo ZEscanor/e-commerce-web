@@ -5,7 +5,7 @@ const Home = ({products,bannerData}) => { //We Get our prouducts from the async 
   return (
     <>
     <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
-    {console.log(bannerData)}
+    {/* {console.log(bannerData)} */}
     
     <div className='products-heading'>
       <h2> Trending Products</h2>
