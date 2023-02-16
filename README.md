@@ -1,11 +1,9 @@
 # e-commerce-web
-An e commerce website using next.js and sanity
+A demo e commerce website using next.js and sanity
 
+![ecom](https://user-images.githubusercontent.com/69213231/219254372-906c39cd-2162-4290-b74a-da997c194f02.png)
 
-*Notes*
+Using sanity we can easily add product names and set the prices and description.
 
-Next.js ---- npx create-next-app
-npm install -g @sanity/cli    
-sanity init --coupoon javascriptmastery2022
-sanity start
-sanity manage - copy projectID to manage in our client.js for sanity
+Once you click an item you can add it to the cart and head to the demo payment section
+
