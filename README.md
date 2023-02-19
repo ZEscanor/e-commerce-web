@@ -1,4 +1,7 @@
 # e-commerce-web
+https://e-commerce-web2.vercel.app/
+
+
 A demo e commerce website using next.js and sanity
 
 ![ecom](https://user-images.githubusercontent.com/69213231/219254372-906c39cd-2162-4290-b74a-da997c194f02.png)
