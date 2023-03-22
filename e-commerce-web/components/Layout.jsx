@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head'; // next js head
 import Navbar from './Navbar';
 import Footer from './Footer';
+import MiddleSection from './MiddleSection';
 
 
 
@@ -27,6 +28,7 @@ const Layout = ({children}) => {
       </header>
       <main className='main-container'>
         {children}
+
       </main>
       <footer>
         <Footer/>

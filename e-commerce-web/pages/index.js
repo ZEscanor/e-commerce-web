@@ -1,5 +1,5 @@
 import React from 'react'
-import { Product, FooterBanner, HeroBanner } from '../components';
+import { Product, FooterBanner, HeroBanner, MiddleSection } from '../components';
 import {client} from "../lib/client";
 const Home = ({products,bannerData}) => { //We Get our prouducts from the async call at the bottom
   return (
@@ -13,9 +13,13 @@ const Home = ({products,bannerData}) => { //We Get our prouducts from the async 
     </div>
 
     <div className='products-container'>
-      {products?.map((product)=>
+      {products?.slice(0,5).map((product)=>
              <Product key={product.id} product= {product}/>
       )}
+    </div>
+
+    <div className='products-container'>
+       <MiddleSection/>
     </div>
 
     <FooterBanner footerBanner = {bannerData && bannerData[0]}/>
