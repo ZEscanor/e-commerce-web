@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import Link from 'next/link';
 
 
 import {AiOutlineShopping} from "react-icons/ai";
+import { TiWeatherSunny, TiWeatherNight } from 'react-icons/ti';
+import { AiOutlineBorderHorizontal, AiOutlineMore } from 'react-icons/ai';
 import {Cart} from "./";
 import { useStateContext } from '../context/StateContext';
 
@@ -17,33 +19,97 @@ import ReactSwitch from 'react-switch';
 
 const Navbar = () => {
   
-  const {showCart, setShowCart, totalQuantities,darkMode,setDarkMode} = useStateContext();
+  const {showCart, setShowCart, totalQuantities,darkMode,setDarkMode, menuOpen, setMenuOpen} = useStateContext();
+
+  let menuTriggerCheck = useRef();
   
  const toggleMode = () => {
   setDarkMode(!darkMode);
  }
 
+ const toggleMenu = () => {
+     setMenuOpen(!menuOpen);
+ }
+
+ useEffect(() => {
+  let menuChecker = (e)=>{
+    if(!null){
+      console.log(menuTriggerCheck)
+    if(!menuTriggerCheck.current?.contains(e.target)){
+      setMenuOpen(false)
+    }
+  }
+  };
+
+  document.addEventListener("mousedown",menuChecker);
+  
+
+  return() => {
+    document.removeEventListener("mousedown", menuChecker);
+  }
+})
+
   return (
-    <div className='navbar-container' >
-      <p className='logo'>
+    <nav className='navbar-container'>
+      <div className='logo'>
         <Link href='/'>
         {/* <img className="imgZ" src= "/headphones_b_1.webp" alt="headphone img"/> */}
-       Headphone Mart
+       Headphone Mart    
+     </Link>
+        </div>
+
+
+      <ul className='innerNavItems'>
+      <li className="firstList" >
+        <Link href='listing'>
+      Store
+      {/* <ReactSwitch onChange={toggleMode} checked={darkMode === true} /> */}
+      </Link>
+      </li>
+      {/* <li>
+        Plans
+      </li> */}
+      
+      {/* <li>
+      <Link href="about">
+        About Us
+        
         
         </Link>
-        </p>
-        <div className= "switch">
-      DarkMode
-      <ReactSwitch onChange={toggleMode} checked={darkMode === true} />
-      </div>
-      <button type='button' className='cart-icon' onClick={()=>setShowCart(true)}>
-       <AiOutlineShopping/>
-       <span className='cart-item-qty'>
-          {totalQuantities}
-       </span>
+        </li> */}
+      
+
+      </ul>
+       
+
+
+       <div className='navMenu' ref={menuTriggerCheck} >
+       <button type='button' className='cart-icon'  onClick={toggleMenu} style={{marginTop:"15px"}} >
+          <AiOutlineMore />
       </button>
+
+      {menuOpen && (
+          <ul className='navBarMenuItems' ref={menuTriggerCheck}>
+            <li onClick={()=>setShowCart(true)}>
+              
+            <AiOutlineShopping/>
+               Cart
+            </li>
+            <li   onClick={()=>setShowCart(true)}>
+              WishList
+            </li>
+            <li onClick={toggleMode}>
+              {darkMode? <TiWeatherSunny/> : <TiWeatherNight/>}
+              DarkMode
+            </li>
+          </ul>
+          )
+        }
+       </div>
+      
+      
       {showCart && <Cart/>}
-      </div>
+      </nav>
   )
 }
 

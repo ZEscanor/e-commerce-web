@@ -7,6 +7,7 @@ import React, {useContext,createContext, useState, useEffect}from 'react';
     export const StateContext = ({ children}) => {
        const [showCart, setShowCart] = useState(false);
        const [darkMode, setDarkMode] = useState(false);
+       const [menuOpen,setMenuOpen] = useState(false);
 
 
        const [cartItems, setCartItems] = useState([]);
@@ -103,7 +104,9 @@ import React, {useContext,createContext, useState, useEffect}from 'react';
                     toggleCartItemQuantity,
                     onRemove,
                     darkMode,
-                    setDarkMode
+                    setDarkMode,
+                    menuOpen,
+                    setMenuOpen
                 }}
                 >
                 {children}

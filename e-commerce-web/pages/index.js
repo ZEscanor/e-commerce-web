@@ -1,7 +1,10 @@
 import React from 'react'
-import { Product, FooterBanner, HeroBanner } from '../components';
+import { Product, FooterBanner, HeroBanner, MiddleSection } from '../components';
 import {client} from "../lib/client";
 const Home = ({products,bannerData}) => { //We Get our prouducts from the async call at the bottom
+
+
+  //console.log(randNumFun)
   return (
     <>
     <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
@@ -9,16 +12,39 @@ const Home = ({products,bannerData}) => { //We Get our prouducts from the async 
     
     <div className='products-heading'>
       <h2> Trending Products</h2>
-      <p> Speakers</p>
     </div>
 
     <div className='products-container'>
-      {products?.map((product)=>
+      {products?.slice(0,5).map((product)=>
+             <Product key={product.id} product= {product}/>
+      )}
+    </div>
+    <div className='products-heading'>
+      <h2>Products On Sale!</h2>
+      <p style={{fontWeight:600}}>up to 30% OFF</p>
+    </div>
+
+    <div className='products-container'>
+      {products?.slice(5,10).map((product)=>
+             <Product key={product.id} product= {product} slash={20}/>
+      )}
+    </div>
+    <div className='products-heading'>
+      <h2> New Arrivals</h2>
+    </div>
+
+    <div className='products-container'>
+      {products?.slice(0,5).map((product)=>
              <Product key={product.id} product= {product}/>
       )}
     </div>
 
-    <FooterBanner footerBanner = {bannerData && bannerData[0]}/>
+   
+       {/* <MiddleSection/> */}
+   
+    
+
+    {/* <FooterBanner footerBanner = {bannerData && bannerData[0]}/> */}
     </>
   )
 }
