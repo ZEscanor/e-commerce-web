@@ -28,12 +28,12 @@ const Navbar = () => {
  }
 
  const toggleMenu = () => {
-     setMenuOpen(true);
+     setMenuOpen(!menuOpen);
  }
 
  useEffect(() => {
   let menuChecker = (e)=>{
-    if(!null || undefined){
+    if(!null){
       console.log(menuTriggerCheck)
     if(!menuTriggerCheck.current?.contains(e.target)){
       setMenuOpen(false)
@@ -54,7 +54,7 @@ const Navbar = () => {
       <div className='logo'>
         <Link href='/'>
         {/* <img className="imgZ" src= "/headphones_b_1.webp" alt="headphone img"/> */}
-       Headphones Mart    
+       Headphone Mart    
      </Link>
         </div>
 
@@ -66,26 +66,26 @@ const Navbar = () => {
       {/* <ReactSwitch onChange={toggleMode} checked={darkMode === true} /> */}
       </Link>
       </li>
-      <li>
+      {/* <li>
         Plans
-      </li>
+      </li> */}
       
-      <li>
+      {/* <li>
       <Link href="about">
         About Us
         
         
         </Link>
-        </li>
+        </li> */}
       
 
       </ul>
        
 
 
-       <div className='navMenu' >
-       <button type='button' className='cart-icon'  onClick={toggleMenu}>
-          <AiOutlineMore/>
+       <div className='navMenu' ref={menuTriggerCheck} >
+       <button type='button' className='cart-icon'  onClick={toggleMenu} style={{marginTop:"15px"}} >
+          <AiOutlineMore />
       </button>
 
       {menuOpen && (
@@ -95,7 +95,7 @@ const Navbar = () => {
             <AiOutlineShopping/>
                Cart
             </li>
-            <li>
+            <li   onClick={()=>setShowCart(true)}>
               WishList
             </li>
             <li onClick={toggleMode}>

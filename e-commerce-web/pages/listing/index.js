@@ -4,7 +4,7 @@ import {client} from "../../lib/client";
 const Home = ({products,bannerData}) => { //We Get our prouducts from the async call at the bottom
   return (
     <>
-    {/* {console.log(bannerData)} */}
+    {console.log(products)}
     
    
 
