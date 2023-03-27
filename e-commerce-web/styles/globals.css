@@ -109,7 +109,7 @@ width: 100%;
   margin-right:4px ;
   margin-top: 2px;
   margin-bottom: 2px;
-  z-index: 10;
+  z-index: 1000;
 
   list-style: none;
   background-color: gray;
@@ -177,7 +177,6 @@ width: 100%;
   font-size: 18px;
   font-weight: 800;
   align-items: center;
-  padding-top: 50px;
 
 }
 
@@ -254,16 +253,16 @@ width: 100%;
 
 .hero-banner-container{
   padding: 100px 40px;
-  background-color: #dcdcdc;
   border-radius: 15px;
   position: relative;
-  height: 500px;
+  height: 800px;
   line-height: 0.9; 
   width: 100%;
-
+  margin-bottom: 20px;
+  color: rgb(47, 105, 230);
 }
 .hero-banner-container .beats-solo{
-  font-size: 20px;
+  font-size: 15px;
 }
 .hero-banner-container button{
    border-radius: 15px;
@@ -275,12 +274,14 @@ width: 100%;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
-  z-index:10000 !important;
+  z-index:1000 !important;
 }
 
 .hero-banner-container h3{
-  font-size: 4rem;
+  font-size: 1.5rem;
   margin-top: 4px;
+  text-transform: uppercase;
+  color: rgb(18, 105, 105);
 }
 .hero-banner-container h1{
   color: white;
@@ -392,6 +393,78 @@ text-align: end;
   font-size: 14px;
   font-weight: 300;
 }
+
+@keyframes slidein {
+  0% {
+    opacity: .65;
+  }
+
+  50% {
+    opacity: .5;
+  }
+
+  75% {
+    opacity: .75;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.gradientDiv{
+  background-image: linear-gradient(white,grey);
+  animation: slidein 3s;
+}
+.carousel{
+  margin-bottom: 200px;
+  height: 800px;
+  line-height: 0.9; 
+  width: 100%;
+  background: url('../public/headGirl1.webp') no-repeat center center;
+  background-size: 50%;
+  z-index: 1000000;
+  animation: slidein 3s;
+  transition: all 1s ease
+}
+.carousel1{
+  margin-bottom: 200px;
+  height: 800px;
+  line-height: 0.9; 
+  width: 100%;
+  background: url('../public/nextGirl.webp') no-repeat center center;
+  background-size: 50%;
+  z-index: 10000000;
+  animation: slidein 3s;
+  transition: all 1s ease
+}
+.carousel2{
+  margin-bottom: 200px;
+  height: 800px;
+  line-height: 0.9; 
+  width: 100%;
+  background: url('../public/djIT.webp') no-repeat center center;
+  background-size: 100%;
+  z-index: 1000000;
+  animation: slidein 3s;
+  transition: all 1s ease 
+}
+.carousel3{
+  margin-bottom: 200px;
+  height: 800px;
+  line-height: 0.9; 
+  width: 100%;
+  background: url('../public/man.jpg') no-repeat center center;
+  background-size: 100%;
+  z-index: 1000000;
+  animation: slidein 3s;
+  transition: all 2s ease
+}
+
+
+
+
+
 .cart-wrapper{
   width: 100vw;
   background: rgba(0, 0, 0, 0.5);
@@ -502,6 +575,29 @@ padding: 20px 10px;
 .total h3{
   font-size: 22px;
 
+}
+
+.imgZ{
+  width: 130px;
+  height: 100px;
+
+}
+
+.dot{
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  margin: 0 5px;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.dot:hover{
+  opacity: .5;
+}
+#dark .dot {
+  background-color: #bbb;
 }
 .remove-item{
   font-size: 24px;

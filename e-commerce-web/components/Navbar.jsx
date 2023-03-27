@@ -34,7 +34,7 @@ const Navbar = () => {
  useEffect(() => {
   let menuChecker = (e)=>{
     if(!null){
-      console.log(menuTriggerCheck)
+      // console.log(menuTriggerCheck)
     if(!menuTriggerCheck.current?.contains(e.target)){
       setMenuOpen(false)
     }
@@ -54,7 +54,7 @@ const Navbar = () => {
       <div className='logo'>
         <Link href='/'>
         {/* <img className="imgZ" src= "/headphones_b_1.webp" alt="headphone img"/> */}
-       Headphone Mart    
+        <img src='../png/headlogo.png' className='imgZ'/>  
      </Link>
         </div>
 
@@ -62,7 +62,7 @@ const Navbar = () => {
       <ul className='innerNavItems'>
       <li className="firstList" >
         <Link href='listing'>
-      Store
+      Products
       {/* <ReactSwitch onChange={toggleMode} checked={darkMode === true} /> */}
       </Link>
       </li>
@@ -72,12 +72,12 @@ const Navbar = () => {
       
       {/* <li>
       <Link href="about">
-        About Us
+        Mission
         
         
         </Link>
-        </li> */}
-      
+        </li>
+       */}
 
       </ul>
        

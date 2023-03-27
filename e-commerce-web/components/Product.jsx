@@ -6,7 +6,7 @@ import { urlFor } from '../lib/client';
 
 
 const Product = ( {product: {image, name , slug, price}, slash} ) => {
-   console.log(slash)
+  //  console.log(slash)
   return (
     <div>
       <Link href={`/product/${slug?.current}`}>

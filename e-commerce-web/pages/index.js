@@ -1,14 +1,73 @@
-import React from 'react'
-import { Product, FooterBanner, HeroBanner, MiddleSection } from '../components';
+import React, {useState, useRef, useEffect} from 'react'
+import { Product, FooterBanner, HeroBanner } from '../components';
 import {client} from "../lib/client";
 const Home = ({products,bannerData}) => { //We Get our prouducts from the async call at the bottom
 
+const [carouselCounter, setCarouselCounter] = useState(1)
+ 
+const timeoutRef = useRef(null);
 
-  //console.log(randNumFun)
+const resetTime = () => {
+  if(timeoutRef?.current){
+    clearTimeout(timeoutRef.current);
+  }
+}
+  const handleClick = (id) => {
+    setCarouselCounter(id)
+  }
+
+  useEffect(() => {
+
+    resetTime();
+    // console.log(carouselCounter)
+    timeoutRef.current = setTimeout(() => {
+      setCarouselCounter((prevCounter) =>
+       prevCounter === bannerData.length -3 ? 1 : prevCounter + 1
+      )
+    }, 10000);
+  
+    return () => {
+      resetTime();
+    };
+  }, [carouselCounter])
+  
+
   return (
-    <>
-    <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
-    {/* {console.log(bannerData)} */}
+    <div>
+      <div className='gradientDiv'>
+
+    { carouselCounter == 2 ? 
+   <div className='carousel1'>
+   <HeroBanner heroBanner={bannerData.length && bannerData[1]}/> 
+   <CarouselDots handleClick={handleClick}/>
+     </div> :
+   carouselCounter == 3 ?  
+     
+   <div className='carousel2'>
+   <HeroBanner heroBanner={bannerData.length && bannerData[2]}/> 
+   <CarouselDots handleClick={handleClick}/>
+     </div> :
+     
+     carouselCounter == 4 ?
+     
+     <div className='carousel3'>
+   <HeroBanner heroBanner={bannerData.length && bannerData[3]}/> 
+   <CarouselDots handleClick={handleClick}/>
+     </div> :
+     
+     <div className='carousel'>
+   <HeroBanner heroBanner={bannerData.length && bannerData[0]}/> 
+   <CarouselDots handleClick={handleClick}/>
+     </div>   }
+
+     {/* <a className='prev'>
+     {'<'}
+     </a>
+     <a className='next'>
+      {'>'}
+     </a> */}
+
+    </div>
     
     <div className='products-heading'>
       <h2> Trending Products</h2>
@@ -45,7 +104,7 @@ const Home = ({products,bannerData}) => { //We Get our prouducts from the async 
     
 
     {/* <FooterBanner footerBanner = {bannerData && bannerData[0]}/> */}
-    </>
+    </div>
   )
 }
 
@@ -63,3 +122,18 @@ export const getServerSideProps = async () => {
   }
 }
 export default Home
+
+
+
+
+const CarouselDots = ({handleClick}) => {
+  return (
+    <div style={{textAlign:"center"}}>
+  <span class="dot" onClick={() =>handleClick(1)}></span>
+  <span class="dot" onClick={() =>handleClick(2)}></span> 
+  <span class="dot" onClick={() =>handleClick(3)}></span> 
+  <span class="dot" onClick={() =>handleClick(4)}></span>
+   </div>
+  )
+}
+
