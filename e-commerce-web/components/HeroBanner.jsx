@@ -23,10 +23,12 @@ const HeroBanner = ({heroBanner,bannerData}) => {
       <Link href={`/product/${heroBanner.product}`}>
         <button type="button">{heroBanner.buttonText} </button>
       </Link>
+
       {/* <div className='desc'>
         <h5> Solo Beats 3000 MX5</h5>
         <p> Best Sounding Headphones</p>
       </div> */}
+
      </div>
       </div>
   )
