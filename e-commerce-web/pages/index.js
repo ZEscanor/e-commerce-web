@@ -3,17 +3,18 @@ import { Product, FooterBanner, HeroBanner } from '../components';
 import {client} from "../lib/client";
 
 const slideImages = [{
-  url: 'http://localhost:3000/djIT.webp'
+  url: 'https://e-commerce-web2.vercel.app/djIT.webp' 
+  
   
 },
 {
-  url: "http://localhost:3000/headGirl1.webp"
+  url: "https://e-commerce-web2.vercel.app/headGirl1.webp"
 },
 {
-  url: "http://localhost:3000/man.jpg"
+  url: "https://e-commerce-web2.vercel.app/man.jpg"
 },
 {
-  url: 'http://localhost:3000/nextGirl.webp'
+  url: 'https://e-commerce-web2.vercel.app/nextGirl.webp'
 }]
 
 
