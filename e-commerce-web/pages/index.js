@@ -1,11 +1,51 @@
 import React, {useState, useRef, useEffect} from 'react'
 import { Product, FooterBanner, HeroBanner } from '../components';
 import {client} from "../lib/client";
-const Home = ({products,bannerData}) => { //We Get our prouducts from the async call at the bottom
 
-const [carouselCounter, setCarouselCounter] = useState(1)
+const slideImages = [{
+  url: 'http://localhost:3000/djIT.webp'
+  
+},
+{
+  url: "http://localhost:3000/headGirl1.webp"
+},
+{
+  url: "http://localhost:3000/man.jpg"
+},
+{
+  url: 'http://localhost:3000/nextGirl.webp'
+}]
+
+
+const Home = ({products,bannerData}) => { //We Get our prouducts from the async call at the bottom
+ 
+
+const [carouselCounter, setCarouselCounter] = useState(0);
+// const [responsiveVariable, setResponsiveVariable] = useState(1400);
+let responsiveVariable = 1400
+let mql;
+
+if (typeof window !== "undefined") {
+   mql = window.matchMedia("(max-width: 500px)");
+}
+
+
+
+// console.log(carouselCounter, slideImages[carouselCounter])
  
 const timeoutRef = useRef(null);
+
+const slidesContainer = {
+ display: 'flex',
+ height: '100%',
+ transition: "transform ease-out 0.3s",
+}
+
+const stylin = () => ({
+ ...slidesContainer,
+width: parentWidth * slideImages.length,
+transform: `translateX(${-(carouselCounter * parentWidth)}px)`
+})
 
 const resetTime = () => {
   if(timeoutRef?.current){
@@ -22,52 +62,41 @@ const resetTime = () => {
     // console.log(carouselCounter)
     timeoutRef.current = setTimeout(() => {
       setCarouselCounter((prevCounter) =>
-       prevCounter === bannerData.length -3 ? 1 : prevCounter + 1
+       prevCounter === slideImages.length - 1 ? 0 : prevCounter === 4 ? 0  : prevCounter + 1
+       
       )
-    }, 10000);
+    }, 5000);
   
     return () => {
       resetTime();
     };
   }, [carouselCounter])
-  
-
+//   if(mql?.matches){
+//   {console.log(mql,"hello")}
+// responsiveVariable = 700
+//   }
+//   else if (responsiveVariable != 1400){
+//     responsiveVariable = 1400
+//   }
   return (
+    
     <div>
-      <div className='gradientDiv'>
-
-    { carouselCounter == 2 ? 
-   <div className='carousel1'>
-   <HeroBanner heroBanner={bannerData.length && bannerData[1]}/> 
-   <CarouselDots handleClick={handleClick}/>
-     </div> :
-   carouselCounter == 3 ?  
-     
-   <div className='carousel2'>
-   <HeroBanner heroBanner={bannerData.length && bannerData[2]}/> 
-   <CarouselDots handleClick={handleClick}/>
-     </div> :
-     
-     carouselCounter == 4 ?
-     
-     <div className='carousel3'>
-   <HeroBanner heroBanner={bannerData.length && bannerData[3]}/> 
-   <CarouselDots handleClick={handleClick}/>
-     </div> :
-     
-     <div className='carousel'>
-   <HeroBanner heroBanner={bannerData.length && bannerData[0]}/> 
-   <CarouselDots handleClick={handleClick}/>
-     </div>   }
-
-     {/* <a className='prev'>
-     {'<'}
-     </a>
-     <a className='next'>
-      {'>'}
-     </a> */}
-
-    </div>
+    <div style={{overflow:"hidden" ,height:"100%"}}>
+    <div style={{display: 'flex',
+ height: '100%',
+ transition: "transform ease-out 0.3s", 
+ transform: `translateX(${-(carouselCounter * responsiveVariable)}px)`
+ }} className='gradientDiv'>
+  {slideImages.map((slide,idx) => (
+   
+ <CurrentSlide slide={slide.url} bannerData={bannerData} handleClick={handleClick} key={idx} id={idx} carouselCounter={carouselCounter}/>
+  )
+  
+  )}
+ 
+</div>
+<CarouselDots handleClick={handleClick}/>
+</div>
     
     <div className='products-heading'>
       <h2> Trending Products</h2>
@@ -129,11 +158,22 @@ export default Home
 const CarouselDots = ({handleClick}) => {
   return (
     <div style={{textAlign:"center"}}>
-  <span class="dot" onClick={() =>handleClick(1)}></span>
-  <span class="dot" onClick={() =>handleClick(2)}></span> 
-  <span class="dot" onClick={() =>handleClick(3)}></span> 
-  <span class="dot" onClick={() =>handleClick(4)}></span>
+  <span className="dot" onClick={() =>handleClick(0)}></span>
+  <span className="dot" onClick={() =>handleClick(1)}></span> 
+  <span className="dot" onClick={() =>handleClick(2)}></span> 
+  <span className="dot" onClick={() =>handleClick(3)}></span>
    </div>
   )
 }
+
+const CurrentSlide = ({products,bannerData,slide, handleClick , id, carouselCounter}) => {
+  return (
+
+  <div style={{backgroundImage: `url(${slide})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize:'cover'}} className='carousel'>
+  <HeroBanner heroBanner={bannerData.length && bannerData[id]}/> 
+  
+    </div>
+  )
+}
+
 
