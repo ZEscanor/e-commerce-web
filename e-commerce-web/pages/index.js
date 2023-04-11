@@ -23,6 +23,7 @@ const Home = ({products,bannerData}) => { //We Get our prouducts from the async 
 
 const [carouselCounter, setCarouselCounter] = useState(0);
 // const [responsiveVariable, setResponsiveVariable] = useState(1400);
+
 let responsiveVariable = 1400
 let mql;
 
@@ -30,29 +31,36 @@ if (typeof window !== "undefined") {
    mql = window.matchMedia("(max-width: 500px)");
 }
 
+ const [onHover, setOnHover] = useState(false);
 
 
-// console.log(carouselCounter, slideImages[carouselCounter])
+//onhover effect on carousel
+
  
 const timeoutRef = useRef(null);
 
-const slidesContainer = {
- display: 'flex',
- height: '100%',
- transition: "transform ease-out 0.3s",
-}
-
-const stylin = () => ({
- ...slidesContainer,
-width: parentWidth * slideImages.length,
-transform: `translateX(${-(carouselCounter * parentWidth)}px)`
-})
 
 const resetTime = () => {
   if(timeoutRef?.current){
     clearTimeout(timeoutRef.current);
   }
 }
+
+const handleMouseEnter = () => {
+  resetTime();
+  setOnHover(true);
+  console.log("hello");
+}
+
+const handleMouseLeave = () => {
+  setOnHover(false);
+  timeoutRef.current = setTimeout(() => {
+    setCarouselCounter((prevCounter) =>
+     prevCounter === slideImages.length - 1 ? 0 : prevCounter + 1
+    )
+  }, 5000);
+}
+
   const handleClick = (id) => {
     setCarouselCounter(id)
   }
@@ -66,7 +74,7 @@ const resetTime = () => {
        prevCounter === slideImages.length - 1 ? 0 : prevCounter === 4 ? 0  : prevCounter + 1
        
       )
-    }, 5000);
+    }, 2000);
   
     return () => {
       resetTime();
@@ -79,15 +87,22 @@ const resetTime = () => {
 //   else if (responsiveVariable != 1400){
 //     responsiveVariable = 1400
 //   }
+
+//
+
+//hover effect on carousel
+
   return (
     
     <div>
-    <div style={{overflow:"hidden" ,height:"100%"}}>
+    <div style={{overflow:"hidden" ,height:"100%", }}  >
     <div style={{display: 'flex',
  height: '100%',
  transition: "transform ease-out 0.3s", 
- transform: `translateX(${-(carouselCounter * responsiveVariable)}px)`
- }} className='gradientDiv'>
+ transform: `translateX(${-(carouselCounter * responsiveVariable)}px)`,
+ opacity: onHover ? '.5': '1'
+ 
+ }} className='gradientDiv'  onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
   {slideImages.map((slide,idx) => (
    
  <CurrentSlide slide={slide.url} bannerData={bannerData} handleClick={handleClick} key={idx} id={idx} carouselCounter={carouselCounter}/>
@@ -151,6 +166,7 @@ export const getServerSideProps = async () => {
     }
   }
 }
+  
 export default Home
 
 
@@ -176,5 +192,3 @@ const CurrentSlide = ({products,bannerData,slide, handleClick , id, carouselCoun
     </div>
   )
 }
-
-

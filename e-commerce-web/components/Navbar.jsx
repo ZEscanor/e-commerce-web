@@ -21,25 +21,32 @@ const Navbar = () => {
   
   const {showCart, setShowCart, totalQuantities,darkMode,setDarkMode, menuOpen, setMenuOpen} = useStateContext();
 
-  let menuTriggerCheck = useRef();
+  const menuTriggerCheck = useRef(null);
   
  const toggleMode = () => {
   setDarkMode(!darkMode);
  }
 
  const toggleMenu = () => {
-     setMenuOpen(!menuOpen);
+      if(menuOpen){
+        return
+      }
+      else if(!menuOpen){
+     setMenuOpen(true);
+      }
  }
 
- useEffect(() => {
-  let menuChecker = (e)=>{
-    if(!null){
-      // console.log(menuTriggerCheck)
-    if(!menuTriggerCheck.current?.contains(e.target)){
-      setMenuOpen(false)
-    }
+const menuChecker = (e)=>{
+  if(!null){
+    // console.log(menuTriggerCheck)
+  if(menuTriggerCheck.current && !menuTriggerCheck.current?.contains(e.target)){
+    console.log("click happened outside the menu")
+    setMenuOpen(false)
   }
-  };
+}
+}
+
+ useEffect(() => {
 
   document.addEventListener("mousedown",menuChecker);
   
@@ -70,23 +77,26 @@ const Navbar = () => {
         Plans
       </li> */}
       
-      {/* <li>
+       <li>
       <Link href="about">
         Mission
         
         
         </Link>
         </li>
-       */}
+       
 
       </ul>
        
 
 
-       <div className='navMenu' ref={menuTriggerCheck} >
-       <button type='button' className='cart-icon'  onClick={toggleMenu} style={{marginTop:"15px"}} >
-          <AiOutlineMore />
-      </button>
+       <div className='navMenu' ref={menuTriggerCheck}  >
+        {menuOpen ?  (
+       <button type='button' className='cart-icon' style={{marginTop:"15px"}}  ref={menuTriggerCheck} disabled>
+          <AiOutlineMore/>
+      </button>) : ( <button type='button' className='cart-icon'  onClick={toggleMenu} style={{marginTop:"15px"}} ref={menuTriggerCheck}>
+          <AiOutlineBorderHorizontal/>
+      </button>)}
 
       {menuOpen && (
           <ul className='navBarMenuItems' ref={menuTriggerCheck}>
