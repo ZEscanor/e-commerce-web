@@ -81,9 +81,9 @@ height: 75%;
   justify-content: space-between;
   margin-bottom: 30px;
   position: relative;
-  background-color: tan;
+  background-color: #232F3E;
   height: 100px;
-  color: #121212;
+  color: white;
 }
 
 .mid{
@@ -195,12 +195,13 @@ height: 75%;
 
 .cart-icon{
   font-size: 25px;
-  color: black;
+  color: white;
   cursor: pointer;
   position: relative;
   transition: transform .4s ease;
   border: none;
   background-color: transparent;
+  color: white;
 }
 .cart-icon:hover{
   transform: scale(1.1,1.1);
@@ -395,6 +396,10 @@ text-align: end;
   font-weight: 300;
 }
 
+.column{
+font-weight: 100;
+}
+
 @keyframes slidein {
   0% {
     opacity: .65;
@@ -502,9 +507,10 @@ text-align: end;
   
 }
 
+
 .footer-container{
   color: #324d67;
-  background-color: tan;
+  background-color: black;
   text-align: center;
   margin-top: 20px;
   padding: 30px 10px;
@@ -514,6 +520,7 @@ text-align: end;
   align-items: center;
   gap: 10px;
   justify-content: center;
+  height: 413px;
 
 }
 .footer-container .icons{

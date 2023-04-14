@@ -6,3 +6,7 @@ export { default as HeroBanner } from './HeroBanner';
 export { default as FooterBanner } from './FooterBanner';
 export { default as Cart } from './Cart';
 export {default as MiddleSection} from './MiddleSection';
+export {default as SearchBar} from './SearchBar';
+export {default as TopBanner} from './TopBanner';
+export {default as Popup} from './Popup';
+export {default as FooterEnd} from './FooterEnd';

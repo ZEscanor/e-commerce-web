@@ -34,6 +34,7 @@ const Home = ({products,bannerData}) => { //We Get our prouducts from the async 
 
 
 
+ //Make A dropdown menu for sorting
  
   return (
     <>
@@ -41,7 +42,7 @@ const Home = ({products,bannerData}) => { //We Get our prouducts from the async 
     <h1>Products</h1>
 
              <AiFillFunnelPlot/>
-           <AiOutlineArrowUp onClick={()=> sort()} /> s
+           <AiOutlineArrowUp onClick={()=> sort()} />
             <AiOutlineArrowDown onClick={()=>reverseSort()}/>
             <AiFillEdit onClick={()=>nameSort()}/>
             </div>
