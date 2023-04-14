@@ -7,6 +7,8 @@ import MiddleSection from './MiddleSection';
 
 
  import { useStateContext } from '../context/StateContext';
+import TopBanner from './TopBanner';
+import FooterEnd from './FooterEnd';
 
 
 
@@ -20,7 +22,7 @@ const Layout = ({children}) => {
         <title> Headphone Mart</title>
       </Head>
 
-      
+      <TopBanner/>
       <header>
      
     
@@ -33,6 +35,7 @@ const Layout = ({children}) => {
       <footer>
         <Footer/>
       </footer>
+      <FooterEnd/>
       </div>
   )
 }

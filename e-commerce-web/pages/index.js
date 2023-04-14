@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react'
-import { Product, FooterBanner, HeroBanner } from '../components';
+import { Product, FooterBanner, HeroBanner, MiddleSection } from '../components';
 import {client} from "../lib/client";
 
 const slideImages = [{
@@ -74,33 +74,22 @@ const handleMouseLeave = () => {
        prevCounter === slideImages.length - 1 ? 0 : prevCounter === 4 ? 0  : prevCounter + 1
        
       )
-    }, 2000);
+    }, 5000);
   
     return () => {
       resetTime();
     };
   }, [carouselCounter])
-//   if(mql?.matches){
-//   {console.log(mql,"hello")}
-// responsiveVariable = 700
-//   }
-//   else if (responsiveVariable != 1400){
-//     responsiveVariable = 1400
-//   }
-
-//
-
-//hover effect on carousel
 
   return (
     
     <div>
     <div style={{overflow:"hidden" ,height:"100%", }}  >
     <div style={{display: 'flex',
- height: '100%',
+ height: '760px',
  transition: "transform ease-out 0.3s", 
  transform: `translateX(${-(carouselCounter * responsiveVariable)}px)`,
- opacity: onHover ? '.5': '1'
+ opacity: onHover ? '.9': '1'
  
  }} className='gradientDiv'  onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
   {slideImages.map((slide,idx) => (
@@ -111,8 +100,9 @@ const handleMouseLeave = () => {
   )}
  
 </div>
-<CarouselDots handleClick={handleClick}/>
+
 </div>
+<CarouselDots handleClick={handleClick}/>
     
     <div className='products-heading'>
       <h2> Trending Products</h2>
@@ -144,11 +134,10 @@ const handleMouseLeave = () => {
     </div>
 
    
-       {/* <MiddleSection/> */}
    
     
 
-    {/* <FooterBanner footerBanner = {bannerData && bannerData[0]}/> */}
+    <FooterBanner footerBanner = {bannerData && bannerData[0]}/>
     </div>
   )
 }
