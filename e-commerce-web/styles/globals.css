@@ -264,8 +264,16 @@ height: 75%;
   color: rgb(47, 105, 230);
 }
 .hero-banner-container .beats-solo{
-  font-size: 15px;
+  font-size: 35px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    color: white;
 }
+.hero-banner-container .beats-solo h3{
+  font-size: 35px;
+    font-weight: 900;
+}
+
 .hero-banner-container button{
    border-radius: 15px;
   padding: 10px 16px;
@@ -280,10 +288,11 @@ height: 75%;
 }
 
 .hero-banner-container h3{
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-top: 4px;
   text-transform: uppercase;
-  color: rgb(18, 105, 105);
+  color: black;
+  font-weight: 900;
 }
 .hero-banner-container h1{
   color: white;
