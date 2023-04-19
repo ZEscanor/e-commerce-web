@@ -2,7 +2,7 @@ import React, {useRef, useEffect} from 'react';
 import Link from 'next/link';
 
 
-import {AiFillSetting, AiOutlineExclamationCircle, AiOutlineSetting, AiOutlineShopping} from "react-icons/ai";
+import {AiFillSetting, AiOutlineExclamationCircle, AiOutlineSearch, AiOutlineSetting, AiOutlineShopping} from "react-icons/ai";
 import { TiWeatherSunny, TiWeatherNight } from 'react-icons/ti';
 import { AiOutlineBorderHorizontal, AiOutlineMore } from 'react-icons/ai';
 import {Cart} from "./";
@@ -68,7 +68,8 @@ const menuChecker = (e)=>{
 
       <ul className='innerNavItems'>
       <li className="firstList" >
-        <Link href='listing'>
+        <Link href="/listing">
+          
       Products
       {/* <ReactSwitch onChange={toggleMode} checked={darkMode === true} /> */}
       </Link>
@@ -94,7 +95,7 @@ const menuChecker = (e)=>{
        </li>
        
        <li>
-      <Link href="about">
+      <Link href="/about">
         Mission
         
         
@@ -104,9 +105,18 @@ const menuChecker = (e)=>{
 
       </ul>
        
-
+      <div className="navMenu">
+        <button type='button' className='cart-icon' style={{marginTop:"15px", marginLeft:"auto"}}>
+          <Link href="/search">
+          <AiOutlineSearch/>
+          </Link>
+        </button>
+     
+      </div>
 
        <div className='navMenu' ref={menuTriggerCheck}  >
+      
+        
         {menuOpen ?  (
        <button type='button' className='cart-icon' style={{marginTop:"15px"}}  ref={menuTriggerCheck} disabled>
           <AiFillSetting/>

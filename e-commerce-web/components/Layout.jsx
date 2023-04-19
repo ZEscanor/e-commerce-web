@@ -9,6 +9,7 @@ import MiddleSection from './MiddleSection';
  import { useStateContext } from '../context/StateContext';
 import TopBanner from './TopBanner';
 import FooterEnd from './FooterEnd';
+import SearchBar from './SearchBar';
 
 
 
