@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import Link from 'next/link';
 
 
@@ -7,7 +7,6 @@ import { TiWeatherSunny, TiWeatherNight } from 'react-icons/ti';
 import { AiOutlineBorderHorizontal, AiOutlineMore } from 'react-icons/ai';
 import {Cart} from "./";
 import { useStateContext } from '../context/StateContext';
-
 import ReactSwitch from 'react-switch';
 
 
@@ -19,13 +18,32 @@ import ReactSwitch from 'react-switch';
 
 const Navbar = () => {
   
-  const {showCart, setShowCart, totalQuantities,darkMode,setDarkMode, menuOpen, setMenuOpen} = useStateContext();
+  const {showCart, setShowCart, totalQuantities,darkMode,setDarkMode, menuOpen, setMenuOpen, expanded, setExpanded} = useStateContext();
 
   const menuTriggerCheck = useRef(null);
+  
   
  const toggleMode = () => {
   setDarkMode(!darkMode);
  }
+
+ const toggleExpanded = (name) => {
+  if(expanded.expanded === false){
+    setExpanded({
+      expanded: true,
+      name: name
+    })
+  }
+}
+
+const unToggleExpanded = () => {
+  setExpanded({
+    expanded: false,
+    name: ""
+  })
+}
+
+
 
  const toggleMenu = () => {
       if(menuOpen){
@@ -49,14 +67,13 @@ const menuChecker = (e)=>{
  useEffect(() => {
 
   document.addEventListener("mousedown",menuChecker);
-  
-
   return() => {
     document.removeEventListener("mousedown", menuChecker);
   }
 })
 
   return (
+    <>
     <nav className='navbar-container'>
       <div className='logo'>
         <Link href='/'>
@@ -67,12 +84,14 @@ const menuChecker = (e)=>{
 
 
       <ul className='innerNavItems'>
-      <li className="firstList" >
+      <li className="firstList" onMouseEnter={()=>toggleExpanded("name")} onMouseLeave={()=>unToggleExpanded()}  >
         <Link href="/listing">
           
       Products
+      
       {/* <ReactSwitch onChange={toggleMode} checked={darkMode === true} /> */}
       </Link>
+      
       </li>
       <li>
         Featured
@@ -145,8 +164,16 @@ const menuChecker = (e)=>{
       
       
       {showCart && <Cart/>}
+      
       </nav>
+      
+      </>
   )
 }
 
 export default Navbar
+
+
+
+
+
