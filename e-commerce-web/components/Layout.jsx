@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Head from 'next/head'; // next js head
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -6,15 +6,24 @@ import MiddleSection from './MiddleSection';
 
 
 
+
  import { useStateContext } from '../context/StateContext';
 import TopBanner from './TopBanner';
 import FooterEnd from './FooterEnd';
 import SearchBar from './SearchBar';
+import NavbarDrop from './NavbarDrop';
 
 
 
 const Layout = ({children}) => {
-  const {darkMode, setDarkMode} = useStateContext();
+  const {darkMode, setDarkMode, expanded, products} = useStateContext();
+
+{console.log(expanded)}
+
+
+  useEffect(() => {
+  
+  }, [expanded])
 
 
   return (
@@ -28,11 +37,13 @@ const Layout = ({children}) => {
      
     
         <Navbar/>
+        {expanded.expanded == true ? <NavbarDrop products={products}/> : null}
       </header>
       <main className='main-container'>
         {children}
 
       </main>
+      
       <footer>
         <Footer/>
       </footer>

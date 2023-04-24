@@ -1,6 +1,7 @@
 import React, {useContext,createContext, useState, useEffect}from 'react';
 
     import {toast} from "react-hot-toast";
+    import {client} from "../lib/client";
 
     const Context = createContext();
 
@@ -8,6 +9,11 @@ import React, {useContext,createContext, useState, useEffect}from 'react';
        const [showCart, setShowCart] = useState(false);
        const [darkMode, setDarkMode] = useState(false);
        const [menuOpen,setMenuOpen] = useState(false);
+       const [products, setProducts] = useState([]); // this is the state that will hold all the products from the api
+       const [expanded, setExpanded] = useState({
+        expanded: false,
+        name: ""
+      });
 
 
        const [cartItems, setCartItems] = useState([]);
@@ -83,7 +89,14 @@ import React, {useContext,createContext, useState, useEffect}from 'react';
             });
             
           
-        }
+        } 
+
+        
+
+
+     
+
+        
 
         return (
             <Context.Provider
@@ -106,7 +119,13 @@ import React, {useContext,createContext, useState, useEffect}from 'react';
                     darkMode,
                     setDarkMode,
                     menuOpen,
-                    setMenuOpen
+                    setMenuOpen,
+                    expanded,
+                    setExpanded,
+                    products,
+                    setProducts
+                    
+
                 }}
                 >
                 {children}

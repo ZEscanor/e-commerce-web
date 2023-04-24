@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react'
-import { Product, FooterBanner, HeroBanner, MiddleSection } from '../components';
+import { Product, FooterBanner, HeroBanner, MiddleSection, NavbarDrop } from '../components';
 import {client} from "../lib/client";
+import { useStateContext } from '../context/StateContext';
 
 const slideImages = [{
   url: 'https://e-commerce-web2.vercel.app/djIT.webp' 
@@ -21,6 +22,8 @@ const slideImages = [{
 const Home = ({products,bannerData}) => { //We Get our prouducts from the async call at the bottom
  
 
+  const {setProducts} = useStateContext();
+  setProducts(products);
 const [carouselCounter, setCarouselCounter] = useState(0);
 // const [responsiveVariable, setResponsiveVariable] = useState(1400);
 
