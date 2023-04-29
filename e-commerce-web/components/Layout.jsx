@@ -16,9 +16,9 @@ import NavbarDrop from './NavbarDrop';
 
 
 const Layout = ({children}) => {
-  const {darkMode, setDarkMode, expanded, products} = useStateContext();
+  const {darkMode, setDarkMode, expanded, products, setExpanded} = useStateContext();
 
-{console.log(expanded)}
+// {console.log(expanded)}
 
 
   useEffect(() => {
@@ -33,11 +33,14 @@ const Layout = ({children}) => {
       </Head>
 
       <TopBanner/>
-      <header>
-     
+      <header >
     
-        <Navbar/>
-        {expanded.expanded == true ? <NavbarDrop products={products}/> : null}
+        <Navbar products={products}/>
+        {/* {expanded.expanded == true ? <NavbarDrop products={products} onMouseEnter={()=>setExpanded({
+        expanded: true,
+        ...expanded
+      })}
+      /> : null} */}
       </header>
       <main className='main-container'>
         {children}

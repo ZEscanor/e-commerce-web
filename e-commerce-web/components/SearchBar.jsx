@@ -21,7 +21,7 @@ useEffect(() => {
     
     setSearchQuery(searchTerm);
     //filter the products by name and return the ones that match the search term 
-    console.log(searchTerm, "debounced" ,  searchProducts)
+    // console.log(searchTerm, "debounced" ,  searchProducts)
 
     
   }

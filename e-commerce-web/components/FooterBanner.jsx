@@ -18,7 +18,7 @@ const FooterBanner = ({footerBanner: {discount,largeText1,largeText2,saleTime, s
           <h3 style={{fontSize:"1rem",} }>The Membership you and you headphones deserve </h3>
           <p>Headphone Mart Totaltech™ Team provides 24/7/365 tech support, up to 24 months of product protection with active membership, free consultation and so much more.</p>
 <p> Terms and condition apply</p>
-          <Link href={`/product/${product}`}>
+          <Link href={`/product/protection`}> 
             <button type='button'>{buttonText}</button>
           </Link>
           

@@ -19,7 +19,7 @@ const Product = ( {product: {image, name , slug, price}, slash} ) => {
             <p className='product-name'>{name}</p>
 
             <p className='product-price'> {slash ? <s style={{textDecorationLine:"line-through",textDecorationColor:"green", textDecorationThickness:"2.5px" }}>
-              <span style={{color:"black"}}>${price + slash}</span></s> : null}  
+              <span style={{color:"black"}}>${Number(price + slash).toPrecision(4)}</span></s> : null}  
               &nbsp; &nbsp;${slash? price : price} </p>
         </div>
       </Link>
