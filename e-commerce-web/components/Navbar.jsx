@@ -8,6 +8,7 @@ import { AiOutlineBorderHorizontal, AiOutlineMore } from 'react-icons/ai';
 import {Cart} from "./";
 import { useStateContext } from '../context/StateContext';
 import ReactSwitch from 'react-switch';
+import NavbarDrop from './NavbarDrop';
 
 
 
@@ -15,12 +16,12 @@ import ReactSwitch from 'react-switch';
 
 
 
-
-const Navbar = () => {
+const Navbar = ({products}) => {
   
   const {showCart, setShowCart, totalQuantities,darkMode,setDarkMode, menuOpen, setMenuOpen, expanded, setExpanded} = useStateContext();
 
   const menuTriggerCheck = useRef(null);
+  const dropdownRef = useRef(null);
   
   
  const toggleMode = () => {
@@ -28,12 +29,16 @@ const Navbar = () => {
  }
 
  const toggleExpanded = (name) => {
-  if(expanded.expanded === false){
+  // if(expanded.expanded === false){
+  //   setExpanded({
+  //     expanded: true,
+  //     name: name
+  //   })
+  
     setExpanded({
       expanded: true,
       name: name
-    })
-  }
+  })
 }
 
 const unToggleExpanded = () => {
@@ -58,7 +63,7 @@ const menuChecker = (e)=>{
   if(!null){
     // console.log(menuTriggerCheck)
   if(menuTriggerCheck.current && !menuTriggerCheck.current?.contains(e.target)){
-    console.log("click happened outside the menu")
+    // console.log("click happened outside the menu")
     setMenuOpen(false)
   }
 }
@@ -72,9 +77,11 @@ const menuChecker = (e)=>{
   }
 })
 
+
+
   return (
-    <>
-    <nav className='navbar-container'>
+    < >
+    <nav className='navbar-container' onMouseLeave={()=>unToggleExpanded()} >
       <div className='logo'>
         <Link href='/'>
         {/* <img className="imgZ" src= "/headphones_b_1.webp" alt="headphone img"/> */}
@@ -83,9 +90,9 @@ const menuChecker = (e)=>{
         </div>
 
 
-      <ul className='innerNavItems'>
-      <li className="firstList" onMouseEnter={()=>toggleExpanded("name")} onMouseLeave={()=>unToggleExpanded()}  >
-        <Link href="/listing">
+      <ul className='innerNavItems' >  {/* onMouseLeave={unToggleExpanded} */}
+      <li className="firstList" onMouseEnter={()=>toggleExpanded("name")}  >
+        <Link href="/listing" >
           
       Products
       
@@ -93,25 +100,28 @@ const menuChecker = (e)=>{
       </Link>
       
       </li>
-      <li>
-        Featured
-       </li>
-       <li>
+       <li onMouseEnter={()=>toggleExpanded("Speaker")} >
+        <Link href="/listing">
          Speakers
+         </Link>
        </li>
-       <li>
+       <li onMouseEnter={()=>toggleExpanded("Headphone")}>
+        <Link href="/listing">
           Headphones
-       </li>
-       <li>
+        </Link>
+       </li >
+       <li onMouseEnter={()=>toggleExpanded("Earphone")} >
+        <Link href="/listing">
           Earphones
+        </Link>
        </li>
-       <li>
+       <li onMouseEnter={()=>toggleExpanded("Accessory")} >
+        <Link href="/listing">
           Accessories
+        </Link>
        </li>
 
-       <li>
-        Gaming
-       </li>
+  
        
        <li>
       <Link href="/about">
@@ -123,6 +133,8 @@ const menuChecker = (e)=>{
        
 
       </ul>
+         {expanded.expanded == true ? <NavbarDrop products={products} 
+      /> : null}
        
       <div className="navMenu">
         <button type='button' className='cart-icon' style={{marginTop:"15px", marginLeft:"auto"}}>
@@ -166,7 +178,7 @@ const menuChecker = (e)=>{
       {showCart && <Cart/>}
       
       </nav>
-      
+   
       </>
   )
 }

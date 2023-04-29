@@ -189,6 +189,11 @@ height: 75%;
 .innerNavItems li{
   margin-right: 60px;
   font-weight: 800;
+  
+}
+.innerNavItems li:hover{
+  color: #f02d34;
+  
 }
 
 

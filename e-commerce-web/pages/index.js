@@ -52,7 +52,7 @@ const resetTime = () => {
 const handleMouseEnter = () => {
   resetTime();
   setOnHover(true);
-  console.log("hello");
+  // console.log("hello");
 }
 
 const handleMouseLeave = () => {
