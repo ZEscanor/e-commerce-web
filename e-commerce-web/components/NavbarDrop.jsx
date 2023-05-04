@@ -14,9 +14,9 @@ const NavbarDrop = ({products}) => {
   //const random = Math.floor(Math.random() * products.length);
   const dropRef = useRef(null);
   const [bgColor, setBgColor] = useState('white');
-  const currPath = window.location.pathname;
+
   
-  console.log(window.location.pathname);
+  //console.log(window.location.pathname);
 
 
 const {expanded, setExpanded} = useStateContext();

@@ -18,10 +18,10 @@ import NavbarDrop from './NavbarDrop';
 
 const Navbar = ({products}) => {
   
-  const {showCart, setShowCart, totalQuantities,darkMode,setDarkMode, menuOpen, setMenuOpen, expanded, setExpanded} = useStateContext();
+  const {showCart, setShowCart, darkMode,setDarkMode, menuOpen, setMenuOpen, expanded, setExpanded} = useStateContext();
 
   const menuTriggerCheck = useRef(null);
-  const dropdownRef = useRef(null);
+ 
   
   
  const toggleMode = () => {
@@ -29,11 +29,7 @@ const Navbar = ({products}) => {
  }
 
  const toggleExpanded = (name) => {
-  // if(expanded.expanded === false){
-  //   setExpanded({
-  //     expanded: true,
-  //     name: name
-  //   })
+ 
   
     setExpanded({
       expanded: true,
@@ -96,7 +92,6 @@ const menuChecker = (e)=>{
           
       Products
       
-      {/* <ReactSwitch onChange={toggleMode} checked={darkMode === true} /> */}
       </Link>
       
       </li>
@@ -115,7 +110,7 @@ const menuChecker = (e)=>{
           Earphones
         </Link>
        </li>
-       <li onMouseEnter={()=>toggleExpanded("Accessory")} >
+       <li onMouseEnter={()=>toggleExpanded("Watch")} >
         <Link href="/listing">
           Accessories
         </Link>
