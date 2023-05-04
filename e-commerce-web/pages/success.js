@@ -30,11 +30,11 @@ useEffect(()=>{
             </p>
             <Link href="/">
              <button type='button' width="300px" className='btn'>
-                Continue Sh
+                Continue Shopping
              </button>
             </Link>
         </div>
-        Success</div>
+        </div>
   )
 }
 

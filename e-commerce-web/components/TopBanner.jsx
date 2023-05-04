@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { AiFillAccountBook, AiFillFacebook, AiFillInstagram, AiFillTwitterCircle, AiFillYoutube } from 'react-icons/ai'
 
@@ -11,10 +12,24 @@ const TopBanner = () => {
             
         </p>
         <p  style={{marginRight:"20px"}}>
-            <span>Free Returns</span>
+            <span style={{
+              textDecoration:"underline",
+              color:"darkblue",
+              fontWeight:"bolder"
+              
+              
+            }}>Free Returns</span>
         </p>
-        <p style={{textDecoration:"underline"}}>
-          <span> Details </span>
+        <p style={{textDecoration:"underline"
+      
+      }}>
+          <span>
+            
+            <Link href='/listing'> 
+            
+            Shop NOW!
+            
+            </Link> </span>
         </p>
         {/* <div style={{marginLeft:"auto", display:"flex", alignItems:"center"}}>
           <div style={{marginRight:"20px"}}>

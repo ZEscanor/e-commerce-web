@@ -122,7 +122,7 @@ const handleMouseLeave = () => {
     </div>
 
     <div className='products-container'>
-      {products?.slice(5,10).map((product)=>
+      {products?.slice(8,13).map((product)=>
              <Product key={product.id} product= {product} slash={20}/>
       )}
     </div>
@@ -131,7 +131,7 @@ const handleMouseLeave = () => {
     </div>
 
     <div className='products-container'>
-      {products?.slice(0,5).map((product)=>
+      {products?.slice(17,21).map((product)=>
              <Product key={product.id} product= {product}/>
       )}
     </div>
@@ -140,7 +140,7 @@ const handleMouseLeave = () => {
    
     
 
-    <FooterBanner footerBanner = {bannerData && bannerData[0]}/>
+    <FooterBanner footerBanner = {bannerData && bannerData[1]}/>
     </div>
   )
 }

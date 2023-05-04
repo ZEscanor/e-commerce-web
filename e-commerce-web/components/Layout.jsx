@@ -12,6 +12,7 @@ import TopBanner from './TopBanner';
 import FooterEnd from './FooterEnd';
 import SearchBar from './SearchBar';
 import NavbarDrop from './NavbarDrop';
+import Popup from './Popup';
 
 
 
@@ -46,6 +47,7 @@ const Layout = ({children}) => {
         {children}
 
       </main>
+      <Popup/>
       
       <footer>
         <Footer/>
